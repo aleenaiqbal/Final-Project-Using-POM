@@ -1,8 +1,13 @@
 from itertools import product
 
 import pytest
+
+from Pages.CartPage import CartPage
 from Pages.HomePage import HomePage
+from Pages.LoginPage import LoginPage
 from Pages.ProductPage import ProductPage
+from Pages.CartPage import CartPage
+from Pages.LoginPage import LoginPage
 from Config.conftest import setup
 
 
@@ -18,3 +23,22 @@ class TestFlow:
         product.open_product()
         assert product.get_title().lower() == "Create Your Own Cocktail".lower()
         assert product.get_price() == "$84.96"
+
+        product.select_stock(1)
+        product.select_quantity(5)
+        product.add_to_cart()
+        product.view_cart()
+
+        cart = CartPage(self.driver)
+
+        self.item_price = float(cart.get_item_price().replace("$", ""))
+        expected_total = round(self.item_price * 6, 2)
+
+        total_price = float(cart.get_total_price().replace("$", ""))
+        assert expected_total == total_price
+
+        cart.place_order()
+
+        login =LoginPage(self.driver)
+        login.login("carlos", "hunter2")
+

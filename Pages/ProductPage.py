@@ -24,5 +24,19 @@ class ProductPage:
     def get_price(self):
         return self.selenium.get_text(self.PRODUCT_PRICE)
 
+    def select_stock(self, index):
+        Select(self.driver.find_element(*self.STOCK)).select_by_index(index)
+
+    def select_quantity(self, index):
+        Select(self.driver.find_element(*self.QUANTITY)).select_by_index(index)
+
+    def add_to_cart(self):
+        self.selenium.click(self.ADD_TO_CART)
+
+    def view_cart(self):
+        self.selenium.click(self.VIEW_CART)
+
+
+
 
 

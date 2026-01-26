@@ -1,11 +1,17 @@
-import pytest
-from selenium import webdriver
+from selenium.webdriver.common.by import By
+from Utils.SeleniumFunction import SeleniumFunction
 
-@pytest.fixture(scope="function", autouse=True)
-def setup(request):
-    driver = webdriver.Chrome()
-    driver.maximize_window()
-    driver.get("https://ginandjuice.shop/")
-    request.cls.driver = driver
-    yield
-    driver.quit()
+class LoginPage:
+    def __init__(self, driver):
+        self.driver = driver
+        self.selenium =SeleniumFunction(driver)
+
+        self.USERNAME = (By.XPATH, '//input[@name="username"]')
+        self.PASSWORD = (By.XPATH, '//input[@name="password"]')
+        self.LOGIN_BTN = (By.XPATH, '//button[text()=" Log in "]')
+
+    def login(self, username, password):
+        self.selenium.send_keys(self.USERNAME, username)
+        self.selenium.click(self.LOGIN_BTN)
+        self.selenium.send_keys(self.PASSWORD, password)
+        self.selenium.click(self.LOGIN_BTN)
