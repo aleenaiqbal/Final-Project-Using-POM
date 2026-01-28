@@ -1,5 +1,6 @@
 import pytest
 from Pages.ProductPage import ProductPage
+from Pages.CartPage import CartPage
 from Config.conftest import setup
 
 class TestProductPage:
@@ -44,3 +45,29 @@ class TestProductPage:
         self.driver.get(self.base_url)
         product = ProductPage(self.driver)
         product.search_product("fruit")
+
+    @pytest.mark.product
+    def test_add_product_to_cart_single_quantity(self):
+        self.driver.get(self.base_url)
+        product = ProductPage(self.driver)
+        product.open_product()
+        product.select_stock(1)
+        product.select_quantity(1)
+        product.add_to_cart()
+
+    @pytest.mark.product
+    def test_add_multiple_products_to_cart(self):
+        self.driver.get(self.base_url)
+        product = ProductPage(self.driver)
+        product.open_product()
+        product.select_stock(1)
+        product.select_quantity(2)
+        product.add_to_cart()
+
+        self.driver.get(self.base_url)
+        product = ProductPage(self.driver)
+        product.open_product()
+        product.select_stock(1)
+        product.select_quantity(3)
+        product.add_to_cart()
+
