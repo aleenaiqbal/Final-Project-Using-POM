@@ -18,8 +18,8 @@ class ProductPage:
         self.VIEW_DETAILS = (By.XPATH, '//span[text()="View details"]')
         self.CHECK_STOCK = (By.XPATH, '//button[text()="Check stock"]')
 
-        self.PRODUCT_PRICE = (By.XPATH, '//span[text()="$30.50"]')
-        self.PRODUCT_IMAGE = (By.XPATH, '/html/body/div[2]/section/div/section[3]/a[1]/img[1]')
+        #self.PRODUCT_PRICE = (By.XPATH, '//span[text()="$30.50"]')
+        #self.PRODUCT_IMAGE = (By.XPATH, '/html/body/div[2]/section/div/section[3]/a[1]/img[1]')
 
         self.SEARCH_INPUT = (By.XPATH, '//input[@id="searchBar"]')
         self.SEARCH_BUTTON = (By.XPATH, '//button[@type="submit"]')
