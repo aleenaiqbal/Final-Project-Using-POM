@@ -16,4 +16,3 @@ class TestFooter:
 
         footer.go_to_our_story()
         check.is_in("about",self.driver.current_url,"Our Story Page URL mismatch")
-

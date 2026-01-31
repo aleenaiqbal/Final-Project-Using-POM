@@ -45,3 +45,7 @@ class CartPage:
 
 
 
+#C:\Users\FCC\Desktop\POMFinalProject\Report
+
+#$env:PYTHONPATH="C:\Users\FCC\Desktop\POMFinalProject"
+#pytest TestCases/ --html="Report/report1.html" --self-contained-html
